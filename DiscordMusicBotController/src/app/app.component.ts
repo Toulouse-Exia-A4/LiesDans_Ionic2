@@ -8,7 +8,6 @@ import { LoginPage } from '../pages/login/login';
 import { ConfigurationPage } from '../pages/configuration/configuration';
 
 import { AlertsProvider } from '../providers/Alerts';
-import { DiscordApiProvider } from '../providers/DiscordApi';
 
 
 @Component({
@@ -23,7 +22,6 @@ export class MyApp {
 
   constructor(
     platform: Platform,
-    public discordApi: DiscordApiProvider,
     public alerts: AlertsProvider,
     private menu: MenuController
   ) {
@@ -45,11 +43,10 @@ export class MyApp {
   }
 
   onInit() {
-    this.discordApi.checkUserLoggedIn().then((result) => {
-      //this.navCtrl.push(LoginPage);
-      //this.alerts.showErrorAlert(result ? "true": "false");
-      this.rootPage = result ? HomePage : LoginPage;
-    })
+    //this.checkUserLoggedIn().then((result) => {
+      //this.rootPage = result ? HomePage : LoginPage;
+      this.rootPage = LoginPage;
+    //})
   }
 
   openPage(page) {
@@ -59,7 +56,7 @@ export class MyApp {
   }
 
   logout() {
-    this.discordApi.clearStorage();
+    //this.discordApi.clearStorage();
     this.menu.close();
     this.nav.setRoot(LoginPage);
   }

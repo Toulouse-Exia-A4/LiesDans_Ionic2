@@ -5,7 +5,6 @@ import { MyApp } from './app.component';
 import { StartPage } from '../pages/start/start';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
-import { DiscordApiProvider } from '../providers/DiscordApi';
 import { AlertsProvider } from '../providers/Alerts';
 
 @NgModule({
@@ -26,7 +25,7 @@ import { AlertsProvider } from '../providers/Alerts';
     HomePage,
     LoginPage
   ],
-  providers: [DiscordApiProvider, AlertsProvider, { provide: ErrorHandler, useClass: IonicErrorHandler }],
+  providers: [AlertsProvider, { provide: ErrorHandler, useClass: IonicErrorHandler }],
   exports: [
   ]
 })

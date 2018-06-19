@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { DiscordApiProvider } from '../../providers/DiscordApi';
 import { AlertsProvider } from '../../providers/Alerts';
 
 import { LoadingController, NavController, NavParams, Platform } from 'ionic-angular';
