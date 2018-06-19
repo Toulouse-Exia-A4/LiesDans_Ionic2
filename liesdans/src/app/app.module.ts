@@ -5,6 +5,7 @@ import { MyApp } from './app.component';
 import { StartPage } from '../pages/start/start';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+import { ProjectPage } from '../pages/project/project';
 import { ProjectListPage } from '../pages/projectList/projectList';
 import { AlertsProvider } from '../providers/Alerts';
 import { DAOBaseProvider } from '../providers/DAOBase';
@@ -17,7 +18,8 @@ import { DAOProjectProvider } from '../providers/DAOProject';
     StartPage,
     HomePage,
     LoginPage,
-    ProjectListPage
+    ProjectListPage,
+    ProjectPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -29,7 +31,8 @@ import { DAOProjectProvider } from '../providers/DAOProject';
     StartPage,
     HomePage,
     LoginPage,
-    ProjectListPage
+    ProjectListPage,
+    ProjectPage
   ],
   providers: [DAOBaseProvider, DAOProfileProvider, DAOProjectProvider, AlertsProvider, { provide: ErrorHandler, useClass: IonicErrorHandler }],
   exports: [

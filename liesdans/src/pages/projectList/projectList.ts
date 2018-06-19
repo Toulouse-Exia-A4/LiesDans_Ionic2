@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { DAOProjectProvider } from '../../providers/DAOProject';
 import { AlertsProvider } from '../../providers/Alerts';
+import { ProjectPage } from '../project/project';
 
 /*
   Generated class for the projectList page.
@@ -52,8 +53,8 @@ export class ProjectListPage {
       ]
     }
 
-    openProject(id) {
-      this.alerts.showSuccessAlert(id, 'Project List');
+    openProject(project) {
+      this.navCtrl.push(ProjectPage, { project: project });
     }
 
 }
