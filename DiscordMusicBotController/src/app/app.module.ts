@@ -9,8 +9,6 @@ import { ConfigurationPage } from '../pages/configuration/configuration';
 import { ConfigurePage } from '../pages/configure/configure';
 import { DiscordApiProvider } from '../providers/DiscordApi';
 import { AlertsProvider } from '../providers/Alerts';
-import { YoutubePage, YoutubeChannelPage, youTubeServiceInjectables, YoutubeSearchResultComponent, YoutubeChannelSearchResultComponent, YoutubeSearchBox } from '../pages/youtube/youtube';
-import { SpotifyPage, spotifyServiceInjectables, SpotifyTracksSearchResultComponent, SpotifyAlbumsSearchResultComponent, SpotifySearchBox } from '../pages/spotify/spotify';
 
 @NgModule({
   declarations: [
@@ -19,16 +17,7 @@ import { SpotifyPage, spotifyServiceInjectables, SpotifyTracksSearchResultCompon
     HomePage,
     LoginPage,
     ConfigurationPage,
-    ConfigurePage,
-    YoutubePage,
-    YoutubeChannelPage,
-    YoutubeSearchResultComponent,
-    YoutubeChannelSearchResultComponent,
-    YoutubeSearchBox,
-    SpotifyPage,
-    SpotifyTracksSearchResultComponent,
-    SpotifyAlbumsSearchResultComponent,
-    SpotifySearchBox
+    ConfigurePage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -41,20 +30,10 @@ import { SpotifyPage, spotifyServiceInjectables, SpotifyTracksSearchResultCompon
     HomePage,
     LoginPage,
     ConfigurationPage,
-    ConfigurePage,
-    YoutubePage,
-    YoutubeChannelPage,
-    YoutubeSearchResultComponent,
-    YoutubeChannelSearchResultComponent,
-    YoutubeSearchBox,
-    SpotifyPage,
-    SpotifyTracksSearchResultComponent,
-    SpotifyAlbumsSearchResultComponent,
-    SpotifySearchBox
+    ConfigurePage
   ],
-  providers: [DiscordApiProvider, AlertsProvider, youTubeServiceInjectables, spotifyServiceInjectables, { provide: ErrorHandler, useClass: IonicErrorHandler }],
+  providers: [DiscordApiProvider, AlertsProvider, { provide: ErrorHandler, useClass: IonicErrorHandler }],
   exports: [
-    YoutubePage, YoutubeChannelPage, SpotifyPage
   ]
 })
 export class AppModule { }

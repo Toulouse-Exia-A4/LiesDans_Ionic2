@@ -4,9 +4,6 @@ import { AlertsProvider } from '../../providers/Alerts';
 
 import { LoadingController, NavController, NavParams, Platform } from 'ionic-angular';
 import { LoginPage } from '../login/login';
-import { EdensPage } from '../edens/edens';
-import { YoutubePage } from '../youtube/youtube';
-import { SpotifyPage } from '../spotify/spotify';
 
 @Component({
   selector: 'page-home',
@@ -68,13 +65,5 @@ export class HomePage {
 
   Next() {
     this.discordApi.sendCommand(this.discordApi.Commands.next);
-  }
-
-  Youtube() {
-    this.nav.push(YoutubePage);
-  }
-
-  Spotify() {
-    this.nav.push(SpotifyPage);
   }
 }
