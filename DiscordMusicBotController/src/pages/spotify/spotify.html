@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar color="spotify">
+    <ion-title>Spotify API</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class='container'>
+    <div class="page-header">
+      <h2>
+        Spotify Search
+      </h2>
+    </div>
+    <div class="row">
+      <div class="input-group input-group-lg col-md-12">
+        <spotify-search-box (loading)="loading = $event"
+                            (tracksResults)="updateTracksResults($event)"
+                            (albumsResults)="updateAlbumsResults($event)"></spotify-search-box>
+      </div>
+    </div>
+    <div padding>
+      <ion-segment [(ngModel)]="type">
+        <ion-segment-button value="tracks">
+          Tracks
+        </ion-segment-button>
+        <ion-segment-button value="albums">
+          Albums
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+    <div [ngSwitch]="type">
+      <div class="row" *ngSwitchCase="'tracks'">
+        <spotify-tracks-search-result *ngFor="let result of tracksResults"
+                                      [result]="result">
+        </spotify-tracks-search-result>
+        
+      </div>
+
+      <div class="row" *ngSwitchCase="'albums'">
+        <spotify-albums-search-result *ngFor="let result of albumsResults"
+                                      [result]="result">
+        </spotify-albums-search-result>
+      </div>
+    </div>
+
+  </div>
+</ion-content>
