@@ -1,0 +1,34 @@
+<!--
+  Generated template for the NewPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>projectList</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card *ngFor="let project of projects">
+    <ion-card-content>
+      <ion-card-title>
+        {{project.name}}
+      </ion-card-title>
+      <p>
+        {{project.description}}
+      </p>
+      <button ion-button icon-start clear small (click)="openProject(project.id)">
+        <div>Go to project page</div>
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

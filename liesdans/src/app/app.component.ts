@@ -5,7 +5,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { StartPage } from '../pages/start/start';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
-import { ConfigurationPage } from '../pages/configuration/configuration';
+import { ProjectListPage } from '../pages/projectList/projectList';
 
 import { AlertsProvider } from '../providers/Alerts';
 import { DAOBaseProvider } from '../providers/DAOBase';
@@ -17,7 +17,8 @@ import { DAOBaseProvider } from '../providers/DAOBase';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = StartPage;
+  //rootPage: any = StartPage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -34,7 +35,8 @@ export class MyApp {
       Splashscreen.hide();
 
       this.pages = [
-        { title: 'Home', component: HomePage }
+        { title: 'Home', component: HomePage },
+        { title: 'Project List', component: ProjectListPage }
       ]
 
       this.onInit();
@@ -45,9 +47,9 @@ export class MyApp {
   }
 
   onInit() {
-    this.daoBase.checkUserLoggedIn().then((result) => {
-      this.rootPage = result ? HomePage : LoginPage;
-    })
+    //this.daoBase.checkUserLoggedIn().then((result) => {
+    //  this.rootPage = result ? HomePage : LoginPage;
+    //})
   }
 
   openPage(page) {

@@ -3,6 +3,7 @@ import { AlertsProvider } from '../../providers/Alerts';
 
 import { LoadingController, NavController, NavParams, Platform } from 'ionic-angular';
 import { LoginPage } from '../login/login';
+import { DAOProfileProvider } from '../../providers/DAOProfile';
 
 @Component({
   selector: 'page-home',
@@ -16,7 +17,8 @@ export class HomePage {
     public nav: NavController,
     public navParams: NavParams,
     public platform: Platform,
-    public alerts: AlertsProvider
+    public alerts: AlertsProvider,
+    public daoProfile: DAOProfileProvider
   ) {
     this.justLoggedIn = navParams.get("justLoggedIn");
   }
@@ -40,16 +42,20 @@ export class HomePage {
 
   Loaded() {
     if (this.justLoggedIn) {
-      //this.discordApi.get("users/@me").then(
-      //  data => {
-      //    this.alerts.showSuccessAlert("Bienvenue " + data.username, "Home");
-      //  },
-      //  error => {
-      //    this.alerts.showErrorAlert(error, "Home");
-      //  }
-      //).catch((err) => {
-      //  this.alerts.showErrorAlert(err, "Home");
-      //});
+      this.daoProfile.getUserIdFromStorage().then(
+        userId => {
+          this.daoProfile.getProfile(userId).then(
+            data => {
+              this.alerts.showSuccessAlert("Bienvenue " + data.firstName, "Home");
+            },
+            error => {
+              this.alerts.showErrorAlert(error, "Home");
+            }
+          ).catch((err) => {
+            this.alerts.showErrorAlert(err, "Home");
+          });
+        }
+      )
     }
   }
 }

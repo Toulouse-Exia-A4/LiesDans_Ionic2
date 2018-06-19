@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AlertsProvider } from '../../providers/Alerts';
 import { LoadingController, NavController, Platform, NavParams, MenuController } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { DAOBaseProvider } from '../../providers/DAOBase';
 
 /*
   Generated class for the login page.
@@ -22,7 +23,8 @@ export class LoginPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public alerts: AlertsProvider,
-    private menu: MenuController
+    private menu: MenuController,
+    private daoBase: DAOBaseProvider
   ) { }
 
   ionViewDidLoad() {
@@ -36,34 +38,33 @@ export class LoginPage {
     //Show the loading indicator
     loader.present();
 
-    //this.discordApi.post("v6/auth/login", this.loginEntry, true).then(
-    //  data => {
-    //    if (data) {
-    //      this.discordApi.saveApiToken(data.token)
-    //        .then((result) => {
-    //          loader.dismiss();
-    //          this.navCtrl.setRoot(HomePage, { justLoggedIn: true });
-    //        })
-    //        .catch((err) => {
-    //          loader.dismiss();
-    //          console.log('Error Log in' + err);
-    //          this.alerts.showErrorAlert(err, "Log In");
-    //        });
-          
-    //    } else {
-    //      loader.dismiss();
-    //      //This really should never happen
-    //      console.error('Error Log in: no data');
-    //    }
-    //  },
-    //  error => {
-    //    //Hide the loading indicator
-    //    loader.dismiss();
-    //    console.error('Error Log in');
-    //    console.dir(error);
-    //    this.alerts.showErrorAlert(error, "Log In");
-    //  }
-    //);
+    this.daoBase.post('/login', this.loginEntry).then(
+      data => {
+        if (data) {
+          this.daoBase.saveUserId(data.userId)
+            .then((result) => {
+              loader.dismiss();
+              this.navCtrl.setRoot(HomePage, { justLoggedIn: true });
+            })
+            .catch((err) => {
+              loader.dismiss();
+              console.log('Error Log in' + err);
+              this.alerts.showErrorAlert(err, "Log In");
+            });
+
+        } else {
+          loader.dismiss();
+          //This really should never happen
+          console.error('Error Log in: no data');
+        }
+      },
+      error => {
+        loader.dismiss();
+        console.error('Error Log in');
+        console.dir(error);
+        this.alerts.showErrorAlert(error, "Log In");
+      }
+    );
   }
 
   ionViewDidEnter() {

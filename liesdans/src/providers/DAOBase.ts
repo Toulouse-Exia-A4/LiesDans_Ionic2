@@ -104,7 +104,7 @@ export class DAOBaseProvider {
     return this.storage.set("userid", userId);
   }
 
-  private getUserIdFromStorage() {
+  public getUserIdFromStorage() {
     return this.storage.get('userid');
   }
 

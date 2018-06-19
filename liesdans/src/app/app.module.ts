@@ -5,15 +5,19 @@ import { MyApp } from './app.component';
 import { StartPage } from '../pages/start/start';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+import { ProjectListPage } from '../pages/projectList/projectList';
 import { AlertsProvider } from '../providers/Alerts';
 import { DAOBaseProvider } from '../providers/DAOBase';
+import { DAOProfileProvider } from '../providers/DAOProfile';
+import { DAOProjectProvider } from '../providers/DAOProject';
 
 @NgModule({
   declarations: [
     MyApp,
     StartPage,
     HomePage,
-    LoginPage
+    LoginPage,
+    ProjectListPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -24,9 +28,10 @@ import { DAOBaseProvider } from '../providers/DAOBase';
     MyApp,
     StartPage,
     HomePage,
-    LoginPage
+    LoginPage,
+    ProjectListPage
   ],
-  providers: [DAOBaseProvider, AlertsProvider, { provide: ErrorHandler, useClass: IonicErrorHandler }],
+  providers: [DAOBaseProvider, DAOProfileProvider, DAOProjectProvider, AlertsProvider, { provide: ErrorHandler, useClass: IonicErrorHandler }],
   exports: [
   ]
 })
