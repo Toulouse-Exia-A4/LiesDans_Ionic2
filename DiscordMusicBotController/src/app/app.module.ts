@@ -6,6 +6,7 @@ import { StartPage } from '../pages/start/start';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { AlertsProvider } from '../providers/Alerts';
+import { DAOBaseProvider } from '../providers/DAOBase';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { AlertsProvider } from '../providers/Alerts';
     HomePage,
     LoginPage
   ],
-  providers: [AlertsProvider, { provide: ErrorHandler, useClass: IonicErrorHandler }],
+  providers: [DAOBaseProvider, AlertsProvider, { provide: ErrorHandler, useClass: IonicErrorHandler }],
   exports: [
   ]
 })

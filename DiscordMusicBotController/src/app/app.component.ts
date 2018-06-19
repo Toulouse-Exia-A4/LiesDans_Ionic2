@@ -8,6 +8,7 @@ import { LoginPage } from '../pages/login/login';
 import { ConfigurationPage } from '../pages/configuration/configuration';
 
 import { AlertsProvider } from '../providers/Alerts';
+import { DAOBaseProvider } from '../providers/DAOBase';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class MyApp {
   constructor(
     platform: Platform,
     public alerts: AlertsProvider,
-    private menu: MenuController
+    private menu: MenuController,
+    private daoBase: DAOBaseProvider
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -43,10 +45,9 @@ export class MyApp {
   }
 
   onInit() {
-    //this.checkUserLoggedIn().then((result) => {
-      //this.rootPage = result ? HomePage : LoginPage;
-      this.rootPage = LoginPage;
-    //})
+    this.daoBase.checkUserLoggedIn().then((result) => {
+      this.rootPage = result ? HomePage : LoginPage;
+    })
   }
 
   openPage(page) {
@@ -56,7 +57,7 @@ export class MyApp {
   }
 
   logout() {
-    //this.discordApi.clearStorage();
+    this.daoBase.clearStorage();
     this.menu.close();
     this.nav.setRoot(LoginPage);
   }
