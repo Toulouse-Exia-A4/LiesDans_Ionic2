@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "DiscordMusicBotController", "DiscordMusicBotController\DiscordMusicBotController.jsproj", "{58CBE3DC-16F1-4A9B-BD4D-21EF9A0434A3}"
+Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "liesdans", "liesdans\liesdans.jsproj", "{58CBE3DC-16F1-4A9B-BD4D-21EF9A0434A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
