@@ -17,7 +17,6 @@ export class HomePage {
     public nav: NavController,
     public navParams: NavParams,
     public platform: Platform,
-    public discordApi: DiscordApiProvider,
     public alerts: AlertsProvider
   ) {
     this.justLoggedIn = navParams.get("justLoggedIn");
@@ -42,28 +41,16 @@ export class HomePage {
 
   Loaded() {
     if (this.justLoggedIn) {
-      this.discordApi.get("users/@me").then(
-        data => {
-          this.alerts.showSuccessAlert("Bienvenu " + data.username, "Home");
-        },
-        error => {
-          this.alerts.showErrorAlert(error, "Home");
-        }
-      ).catch((err) => {
-        this.alerts.showErrorAlert(err, "Home");
-      });
+      //this.discordApi.get("users/@me").then(
+      //  data => {
+      //    this.alerts.showSuccessAlert("Bienvenue " + data.username, "Home");
+      //  },
+      //  error => {
+      //    this.alerts.showErrorAlert(error, "Home");
+      //  }
+      //).catch((err) => {
+      //  this.alerts.showErrorAlert(err, "Home");
+      //});
     }
-  }
-
-  Pause() {
-    this.discordApi.sendCommand(this.discordApi.Commands.pause);
-  }
-
-  Resume() {
-    this.discordApi.sendCommand(this.discordApi.Commands.resume);
-  }
-
-  Next() {
-    this.discordApi.sendCommand(this.discordApi.Commands.next);
   }
 }

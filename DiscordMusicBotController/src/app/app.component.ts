@@ -34,8 +34,7 @@ export class MyApp {
       Splashscreen.hide();
 
       this.pages = [
-        { title: 'Home', component: HomePage },
-        { title: 'Configuration', component: ConfigurationPage }
+        { title: 'Home', component: HomePage }
       ]
 
       this.onInit();
