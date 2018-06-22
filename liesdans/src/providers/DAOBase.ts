@@ -15,7 +15,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class DAOBaseProvider {
 
-  private ApiEndPoint = 'http://localhost:80';
+  private ApiEndPoint = 'http://localhost:8733';
 
   constructor(public http: Http, public storage: Storage, public loadingCtrl: LoadingController) {
     console.log('Hello DAOBase Provider');

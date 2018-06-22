@@ -42,20 +42,23 @@ export class HomePage {
 
   Loaded() {
     if (this.justLoggedIn) {
-      this.daoProfile.getUserIdFromStorage().then(
-        userId => {
-          this.daoProfile.getProfile(userId).then(
-            data => {
-              this.alerts.showSuccessAlert("Bienvenue " + data.firstName, "Home");
-            },
-            error => {
-              this.alerts.showErrorAlert(error, "Home");
-            }
-          ).catch((err) => {
-            this.alerts.showErrorAlert(err, "Home");
-          });
-        }
-      )
+      this.daoProfile.getUserIdFromStorage()
+        .then(userId => {
+          //this.daoProfile.getProfile(userId).then(
+          //  data => {
+          //    this.alerts.showSuccessAlert("Bienvenue " + data.firstName, "Home");
+          //  },
+          //  error => {
+          //    this.alerts.showErrorAlert(error, "Home");
+          //  }
+          //).catch((err) => {
+          //  this.alerts.showErrorAlert(err, "Home");
+          //});
+          this.alerts.showSuccessAlert("Bienvenue " + userId, "Home");
+        })
+        .catch(error => {
+          this.alerts.showErrorAlert(error, "Home");
+        })
     }
   }
 }

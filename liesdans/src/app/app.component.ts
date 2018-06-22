@@ -17,8 +17,7 @@ import { DAOBaseProvider } from '../providers/DAOBase';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  //rootPage: any = StartPage;
-  rootPage: any = HomePage;
+  rootPage: any = StartPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -47,9 +46,9 @@ export class MyApp {
   }
 
   onInit() {
-    //this.daoBase.checkUserLoggedIn().then((result) => {
-    //  this.rootPage = result ? HomePage : LoginPage;
-    //})
+    this.daoBase.checkUserLoggedIn().then((result) => {
+      this.rootPage = result ? HomePage : LoginPage;
+    })
   }
 
   openPage(page) {

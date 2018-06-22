@@ -38,10 +38,10 @@ export class LoginPage {
     //Show the loading indicator
     loader.present();
 
-    this.daoBase.post('/login', this.loginEntry).then(
+    this.daoBase.post('/UsersService/login', this.loginEntry).then(
       data => {
         if (data) {
-          this.daoBase.saveUserId(data.userId)
+          this.daoBase.saveUserId(data.LoginResult)
             .then((result) => {
               loader.dismiss();
               this.navCtrl.setRoot(HomePage, { justLoggedIn: true });
